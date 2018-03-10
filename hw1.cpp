@@ -54,7 +54,7 @@ class Plane{
 			std::cout<<this->planeID<<" ("<<this->type<<") - flying...\n";
 		}
 	
-		virtual double price() = 0;
+		virtual int price() = 0;
 };
 
 class FighterPlane : public Plane{
@@ -64,10 +64,6 @@ class FighterPlane : public Plane{
 			type = "fighter plane";
 		}
 		FighterPlane(const FighterPlane &p):Plane(p){}
-
-		/*~FighterPlane():~Plane(){
-			std::cout<<this->planeID<<" deleted...";
-		}*/
 
 		void launchMissile(){
 			std::cout<<this->planeID<<" - initiating launching missile procedure...\n";
@@ -91,7 +87,7 @@ class Mig : public FighterPlane{
 			std::cout<<this->planeID<<" - normal geometry selected...\n";
 		}
 
-		double price(){
+		int price(){
 			return 100000;
 		}
 };
@@ -107,7 +103,7 @@ class TomCat : public FighterPlane{
 		void refuel(){
 			std::cout<<this->planeID<<" - initiating refueling procedure...\n";
 		}
-		double price(){
+		int price(){
 			return 200000;
 		}
 };
@@ -120,10 +116,6 @@ class PassengerPlane : public Plane{
 			type = "passenger plane";
 		}
 		PassengerPlane(const FighterPlane &p):Plane(p){}
-
-		/*~PassengerPlane():~Plane(){
-			std::cout<<this->planeID<<" deleted...";
-		}*/
 
 		void setMaxPassengers(int mp){
 			max_passengers = mp;
@@ -143,7 +135,7 @@ class Boeing : public PassengerPlane{
 		}
 		Boeing(const Boeing &p):PassengerPlane(p){}
 
-		double price(){
+		int price(){
 			return 300000;
 		}
 };
@@ -164,7 +156,7 @@ class Concorde : public PassengerPlane{
 			std::cout<<this->planeID<<" - subsonic mode activated...\n";
 		}
 
-		double price(){
+		int price(){
 			return 400000;
 		}
 };
@@ -185,10 +177,10 @@ int main(){
 	TomCat *f5 = new TomCat("104", 2000);
 	Concorde *p5 = p1;
 
-	p1->price();
-	p2->price();
-	f1->price();
-	f2->price();
+	std::cout<<"The price for a Concorde plane is: "<<p1->price()<<"\n";
+	std::cout<<"The price for a Boeing plane is: "<<p2->price()<<"\n";
+	std::cout<<"The price for a Mig plane is: "<<f1->price()<<"\n";
+	std::cout<<"The price for a TomCat plane is: "<<f2->price()<<"\n";
 	
 	p1->getMaxPassengers();	
 	p1->takeOff();
