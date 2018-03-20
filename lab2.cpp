@@ -38,11 +38,11 @@ int main() {
   decltype(i) v1;
   decltype(ci) v2 = 8;
   decltype(cri) v3 = i; //e constanta de tip intreg, referinta la intreg => trebuie initializata cu o adresa
-  decltype(p) v4; //decltype poate sa interfereze si const si referinta
+  decltype(p) v4; //decltype poate sa infereze si const si referinta
   
   decltype((i)) v = var1; //ia adresa la tipul inferat, chiar daca nu am dat adresa (da eroare pentru ca am adresa neinitializata) => trebuie initializat cu o valoare intreaga (numele unei variabile intregi)
 
-  //-------------------------------------------------------------
+  //---------------------------------------------------------------
   
   foo(0);
   //foo(NULL);   // in functie de compilator, NULL va fi considerat fie int , fie ambiguu => uita ca exista NULL
@@ -58,8 +58,7 @@ int main() {
   //begin() pointeaza spre primul element; begin returneaza iterator => ca sa il afisez trebuie dereferentiat
   //end() pointeaza catre terminator -> end()-1 pointeaza spre ultimul element => trebuie dereferentiat
   //front() - la fel ca begin(), doar ca afiseaza direct valoarea
-  //back() - la fel ca end(), doar ca afiseaza direct valoarea
-  //altbegin() returneaza pointer spre ultimul element din container
+  //back() - la fel ca end()-1, doar ca afiseaza direct valoarea
   
   array.front() = 10;
   array.back() = 2;
