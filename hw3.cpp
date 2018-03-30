@@ -66,15 +66,17 @@ int main(){
 	MyContainer *c5 = c4;
 	MyContainer *c6 = c3;
 
-	vector<MyContainer>  v = {c1, c2, c3, c4, c5, c6}; 
+	MyContainer  *v[] = {c1, c2, c3, c4, c5, c6}; 
+	vector<MyContainer> vect (v, v+6);
 
-	vector<MyContainer>::iterator it = find_if(v.begin(), v.end(),[]( ?? ){
+	
+	vector<MyContainer>::iterator it = find_if(vect.begin(), vect.end(),[](MyContainer it) -> bool{
 		return it->getContainer() > 10;	
 	});
 
 	//fa remove if
 
-	cout<<*it<<endl;
+	cout<<it->getContainer()<<endl;
 	
 	
 }
